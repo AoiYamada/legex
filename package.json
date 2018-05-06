@@ -1,0 +1,31 @@
+{
+  "name": "legex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha --recursive ./test",
+    "build": "browserify main.js > ./dist/legex.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AoiYamada/legex.git"
+  },
+  "keywords": [
+    "regex"
+  ],
+  "author": "AoiYamada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AoiYamada/legex/issues"
+  },
+  "homepage": "https://github.com/AoiYamada/legex#readme",
+  "devDependencies": {
+    "browserify": "^16.2.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
