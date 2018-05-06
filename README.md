@@ -8,7 +8,8 @@ npm i git+https://github.com/AoiYamada/legex --save
 
 ## Usage
 ```javascript
-const legex = require('legex/dist/legex');
+const legex = require('legex');
+// bundled file at 'legex/dist/' for browser
 
 const c = legex.C;
 const v = legex.V;
