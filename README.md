@@ -3,7 +3,7 @@ Regular Expression is too difficult to me, so I am looking for a descriptive way
 
 ## Installation
 ```bash
-npm i git+https://github.com/AoiYamada/legex --save
+npm i legex --save
 ```
 
 ## Usage
