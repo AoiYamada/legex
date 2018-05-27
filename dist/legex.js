@@ -489,46 +489,45 @@ const QuoteBy = require('./QuoteBy');
 const Regex = require('./Regex');
 const StartWith = require('./StartWith');
 const StartWithNon = require('./StartWithNon');
-const Validator = require('./Validator');
 
 module.exports = {
-    AfterNth,
-    Anything,
-    BeforeNth,
-    EndWith,
-    EndWithNon,
-    Exclude,
-    FirstN,
-    Has,
-    HasN,
-    IsAlphabet,
-    IsChinese,
-    IsEmail,
-    IsInt,
-    IsIP,
-    IsLowerCase,
-    IsUpperCase,
-    IsWord,
-    LastN,
-    LenBtw,
-    LenEq,
-    LenGeq,
-    LenGt,
-    LenLeq,
-    LenLt,
-    QuoteBy,
-    Regex,
-    StartWith,
-    StartWithNon,
-    Validator,
+    AfterNth: (...args) => new AfterNth(...args),
+    Anything: (...args) => new Anything(...args),
+    BeforeNth: (...args) => new BeforeNth(...args),
+    EndWith: (...args) => new EndWith(...args),
+    EndWithNon: (...args) => new EndWithNon(...args),
+    Exclude: (...args) => new Exclude(...args),
+    FirstN: (...args) => new FirstN(...args),
+    Has: (...args) => new Has(...args),
+    HasN: (...args) => new HasN(...args),
+    IsAlphabet: (...args) => new IsAlphabet(...args),
+    IsChinese: (...args) => new IsChinese(...args),
+    IsEmail: (...args) => new IsEmail(...args),
+    IsInt: (...args) => new IsInt(...args),
+    IsIP: (...args) => new IsIP(...args),
+    IsLowerCase: (...args) => new IsLowerCase(...args),
+    IsUpperCase: (...args) => new IsUpperCase(...args),
+    IsWord: (...args) => new IsWord(...args),
+    LastN: (...args) => new LastN(...args),
+    LenBtw: (...args) => new LenBtw(...args),
+    LenEq: (...args) => new LenEq(...args),
+    LenGeq: (...args) => new LenGeq(...args),
+    LenGt: (...args) => new LenGt(...args),
+    LenLeq: (...args) => new LenLeq(...args),
+    LenLt: (...args) => new LenLt(...args),
+    QuoteBy: (...args) => new QuoteBy(...args),
+    Regex: (...args) => new Regex(...args),
+    StartWith: (...args) => new StartWith(...args),
+    StartWithNon: (...args) => new StartWithNon(...args),
 }
 
 // const fs = require('fs');
 // const dirs = fs.readdirSync('./');
 // const arr = dirs
-//     .map(dir => dir.replace('.js', ''));
+//     .map(dir => dir.replace('.js', ''))
+//     .filter(dir => dir !== 'index' && dir !== 'Validator');
 
 // for (const dir of arr)
     // console.log(`const ${dir} = require('./${dir}');`);
-    // console.log(`${dir},`);
-},{"./AfterNth":3,"./Anything":4,"./BeforeNth":5,"./EndWith":6,"./EndWithNon":7,"./Exclude":8,"./FirstN":9,"./Has":10,"./HasN":11,"./IsAlphabet":12,"./IsChinese":13,"./IsEmail":14,"./IsIP":15,"./IsInt":16,"./IsLowerCase":17,"./IsUpperCase":18,"./IsWord":19,"./LastN":20,"./LenBtw":21,"./LenEq":22,"./LenGeq":23,"./LenGt":24,"./LenLeq":25,"./LenLt":26,"./QuoteBy":27,"./Regex":28,"./StartWith":29,"./StartWithNon":30,"./Validator":31}]},{},[1]);
+    // console.log(`    ${dir}: (...args) => new ${dir}(...args),`);
+},{"./AfterNth":3,"./Anything":4,"./BeforeNth":5,"./EndWith":6,"./EndWithNon":7,"./Exclude":8,"./FirstN":9,"./Has":10,"./HasN":11,"./IsAlphabet":12,"./IsChinese":13,"./IsEmail":14,"./IsIP":15,"./IsInt":16,"./IsLowerCase":17,"./IsUpperCase":18,"./IsWord":19,"./LastN":20,"./LenBtw":21,"./LenEq":22,"./LenGeq":23,"./LenGt":24,"./LenLeq":25,"./LenLt":26,"./QuoteBy":27,"./Regex":28,"./StartWith":29,"./StartWithNon":30}]},{},[1]);

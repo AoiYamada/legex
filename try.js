@@ -13,20 +13,20 @@ const v = legex.V;
 
 // Condition1 before '@':
 const beforeAtType1 = c.And(
-             new v.StartWithNon('<>()[]\\.,;:@ '), // not start with '<>()[]\\.,;:@ '
-             new v.HasN(1, '@'), // has one '@''
-             new v.BeforeNth(
+             v.StartWithNon('<>()[]\\.,;:@ '), // not start with '<>()[]\\.,;:@ '
+             v.HasN(1, '@'), // has one '@''
+             v.BeforeNth(
                 1, '@', // before the first '@'
-                new v.Exclude('<>()[]\\,;:@ ') // do not contain '<>()[]\\,;:@ '
+                v.Exclude('<>()[]\\,;:@ ') // do not contain '<>()[]\\,;:@ '
              )
            );
 
 // Condition2 before '@':
-const beforeAtType2 = new v.BeforeNth(
+const beforeAtType2 = v.BeforeNth(
               1, '@', // before the first '@'
-              new v.QuoteBy(
+              v.QuoteBy(
                 '"', '"',
-                new v.Anything()
+                v.Anything()
               )
             );
 
@@ -34,32 +34,32 @@ const beforeAtType2 = new v.BeforeNth(
 const beforeAt = c.Or(beforeAtType1, beforeAtType2);
 
 // Condition1 after '@':
-const afterAtType1 = new v.AfterNth(
+const afterAtType1 = v.AfterNth(
               1,'@', // after the first '@'
-              new v.QuoteBy(
+              v.QuoteBy(
                 '[',']',
-                new v.IsIP() // format of IP
+                v.IsIP() // format of IP
               )
              );
 
 // A Validator for checking does the string contain at least 2 alphabets (and alphabets only)
 const alphabets = c.And(
-            new v.IsAlphabet(), // alphabets
-            new v.LenGeq(2) // more than 2(inclusive)
+            v.IsAlphabet(), // alphabets
+            v.LenGeq(2) // more than 2(inclusive)
          );
 
 // Condition2 after '@':
 const afterAtType2 = c.And(
-            new v.AfterNth(
+            v.AfterNth(
                 1,'@', // after the first '@'
-                new v.BeforeNth(
+                v.BeforeNth(
                     1, '.', // before the first '.'
-                    new v.IsWord() // is word character (a-z, A-Z, 0-9, _)
+                    v.IsWord() // is word character (a-z, A-Z, 0-9, _)
                   )
               ), 
-            new v.AfterNth(
+            v.AfterNth(
                 1,'@', // after the first '@'
-                new v.AfterNth(
+                v.AfterNth(
                     1, '.', // after the first '.'
                     alphabets // contains at least 2 alphabets
                   )
@@ -96,10 +96,10 @@ assert('.....@aaa.dds', email('.....@aaa.dds') === false, 'should be false');
 // Email validation is common, so this library has a true validation for that XD
 // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 console.log('Valid emails:');
-assert('aaa@aaa.dds', new v.IsEmail().check('aaa@aaa.dds') === true, 'should be true');
-assert('aaa@aaa.dd', new v.IsEmail().check('aaa@aaa.dd') === true, 'should be true');
-assert('aaa@[192.168.0.1]', new v.IsEmail().check('aaa@[192.168.0.1]') === true, 'should be true');
-assert('\".....\"@aaa.dds', new v.IsEmail().check('\".....\"@aaa.dds') === true, 'should be true');
+assert('aaa@aaa.dds', v.IsEmail().check('aaa@aaa.dds') === true, 'should be true');
+assert('aaa@aaa.dd', v.IsEmail().check('aaa@aaa.dd') === true, 'should be true');
+assert('aaa@[192.168.0.1]', v.IsEmail().check('aaa@[192.168.0.1]') === true, 'should be true');
+assert('\".....\"@aaa.dds', v.IsEmail().check('\".....\"@aaa.dds') === true, 'should be true');
 assert('simple@example.com', email('simple@example.com') === true, 'should be true');
 assert('very.common@example.com', email('very.common@example.com') === true, 'should be true');
 assert('disposable.style.email.with+symbol@example.com', email('disposable.style.email.with+symbol@example.com') === true, 'should be true');
@@ -109,8 +109,8 @@ assert('user.name+tag+sorting@example.com', email('user.name+tag+sorting@example
 assert('#!$%&\'*+-/=?^_`{}|~@example.org', email('#!$%&\'*+-/=?^_`{}|~@example.org') === true, 'should be true');
 
 console.log('Invalid emails:');
-assert('.aaa@aaa.dds', new v.IsEmail().check('.aaa@aaa.dds') === false, 'should be false');
-assert('aaa@aaa.d', new v.IsEmail().check('aaa@aaa.d') === false, 'should be false');
-assert('aaa@aaa.d4s', new v.IsEmail().check('aaa@aaa.d4s') === false, 'should be false');
-assert('aaa@[19.23.2]', new v.IsEmail().check('aaa@[19.23.2]') === false, 'should be false');
-assert('.....@aaa.dds', new v.IsEmail().check('.....@aaa.dds') === false, 'should be false');
+assert('.aaa@aaa.dds', v.IsEmail().check('.aaa@aaa.dds') === false, 'should be false');
+assert('aaa@aaa.d', v.IsEmail().check('aaa@aaa.d') === false, 'should be false');
+assert('aaa@aaa.d4s', v.IsEmail().check('aaa@aaa.d4s') === false, 'should be false');
+assert('aaa@[19.23.2]', v.IsEmail().check('aaa@[19.23.2]') === false, 'should be false');
+assert('.....@aaa.dds', v.IsEmail().check('.....@aaa.dds') === false, 'should be false');
