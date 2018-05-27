@@ -1,6 +1,6 @@
 {
   "name": "legex",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "main.js",
   "directories": {
@@ -12,9 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AoiYamada/legex.git"
+    "url": "git+https://github.com/AoiYamada/legex"
   },
   "keywords": [
+    "legex",
     "regex"
   ],
   "author": "AoiYamada",
