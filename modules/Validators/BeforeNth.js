@@ -5,7 +5,7 @@ module.exports = class BeforeNth extends Validator {
         super();
         const escape_pattern = Validator.escapeSymbols(pattern);
         this.escape_pattern = escape_pattern;
-        this.regex = new RegExp(`^([^${escape_pattern}]*${escape_pattern}){${n}}`);
+        this.regex = new RegExp(`^((?:.*?)${escape_pattern}){${n}}`);
         this.validator = validator;
     }
     check(x) {

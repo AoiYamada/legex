@@ -73,7 +73,7 @@ module.exports = class AfterNth extends Validator {
     constructor(n, pattern, validator) {
         super();
         const escape_pattern = Validator.escapeSymbols(pattern);
-        this.regex = new RegExp(`(?:[^${escape_pattern}]*${escape_pattern}){${n}}(.+$)`);
+        this.regex = new RegExp(`(?:(?:.*?)${escape_pattern}){${n}}(.+$)`);
         this.validator = validator;
     }
     check(x) {
@@ -99,7 +99,7 @@ module.exports = class BeforeNth extends Validator {
         super();
         const escape_pattern = Validator.escapeSymbols(pattern);
         this.escape_pattern = escape_pattern;
-        this.regex = new RegExp(`^([^${escape_pattern}]*${escape_pattern}){${n}}`);
+        this.regex = new RegExp(`^((?:.*?)${escape_pattern}){${n}}`);
         this.validator = validator;
     }
     check(x) {
@@ -210,7 +210,8 @@ module.exports = class IsChinese extends Validator {
         super();
     }
     check(x) {
-        return Validator.test(/^[\u4e00-\u9fbb\u3400-\u4DBF]$/, x);
+        // https://stackoverflow.com/questions/21109011/javascript-unicode-string-chinese-character-but-no-punctuation
+        return Validator.test(/^(?:[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d])+$/, x);
     }
 }
 },{"./Validator":31}],14:[function(require,module,exports){
@@ -528,6 +529,6 @@ module.exports = {
 //     .filter(dir => dir !== 'index' && dir !== 'Validator');
 
 // for (const dir of arr)
-    // console.log(`const ${dir} = require('./${dir}');`);
-    // console.log(`    ${dir}: (...args) => new ${dir}(...args),`);
+//     console.log(`const ${dir} = require('./${dir}');`);
+//     console.log(`    ${dir}: (...args) => new ${dir}(...args),`);
 },{"./AfterNth":3,"./Anything":4,"./BeforeNth":5,"./EndWith":6,"./EndWithNon":7,"./Exclude":8,"./FirstN":9,"./Has":10,"./HasN":11,"./IsAlphabet":12,"./IsChinese":13,"./IsEmail":14,"./IsIP":15,"./IsInt":16,"./IsLowerCase":17,"./IsUpperCase":18,"./IsWord":19,"./LastN":20,"./LenBtw":21,"./LenEq":22,"./LenGeq":23,"./LenGt":24,"./LenLeq":25,"./LenLt":26,"./QuoteBy":27,"./Regex":28,"./StartWith":29,"./StartWithNon":30}]},{},[1]);
