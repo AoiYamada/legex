@@ -28,7 +28,7 @@ function combinator(fn, memory = [], ...args) {
             break;
         }
     }
-    if(x)
+    if (x)
         return fn(local, x);
     else {
         const c = combinator.bind(null, fn, local)
@@ -222,6 +222,8 @@ module.exports = class IsEmail extends Validator {
         super();
     }
     check(x) {
+    	// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+    	// this regex does not cover all email cases but it checks common formats.
         return Validator.test(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, x);
     }
 }
@@ -233,7 +235,8 @@ module.exports = class IsIP extends Validator {
         super();
     }
     check(x) {
-        return Validator.test(/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/, x);
+    	// https://stackoverflow.com/questions/4460586/javascript-regular-expression-to-check-for-ip-addresses
+        return Validator.test(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/, x);
     }
 }
 },{"./Validator":31}],16:[function(require,module,exports){

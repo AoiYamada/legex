@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "mocha --recursive ./test",
+    "test": "nyc mocha --recursive ./test",
     "build": "browserify browser.js > ./dist/legex.js"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "devDependencies": {
     "browserify": "^16.2.0",
     "chai": "^4.1.2",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "nyc": "^12.0.1"
   }
 }
