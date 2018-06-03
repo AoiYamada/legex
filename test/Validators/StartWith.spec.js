@@ -14,16 +14,16 @@ describe('StartWith', () => {
             const start = randomString(~~(10 * Math.random() + 1));
             const end = randomString(~~(10 * Math.random()));
             const str = start + end;
-            const StartWithRandom = new StartWith(start);
-            assert(StartWithRandom.check(str), `${str} start with ${start}`);
+            const start_with_random_check = new StartWith(start);
+            assert(start_with_random_check.check(str), `${str} start with ${start}`);
         }
         for (let i = 0; i < 100; i++) {
             const start = randomString(~~(10 * Math.random() + 1)).replace(/A/g, 'B');
             const wrong_start = 'A' + start;
             const end = randomString(~~(10 * Math.random()));
             const str = wrong_start + end;
-            const StartWithRandom = new StartWith(start);
-            assert(!StartWithRandom.check(str), `${str} do not start with ${start}`);
+            const start_with_random_check = new StartWith(start);
+            assert(!start_with_random_check.check(str), `${str} do not start with ${start}`);
         }
     });
 });

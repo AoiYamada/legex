@@ -22,7 +22,7 @@ function combinator(fn, memory = [], ...args) {
             break;
         }
     }
-    if(x)
+    if (x)
         return fn(local, x);
     else {
         const c = combinator.bind(null, fn, local)

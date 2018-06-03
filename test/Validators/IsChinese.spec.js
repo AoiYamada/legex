@@ -9,15 +9,15 @@ const MODULES_PATH = './modules/';
 const IsChinese = require(path.join(CWD, MODULES_PATH, 'Validators/IsChinese'));
 
 describe('IsChinese', () => {
+    const chinese_check = new IsChinese();
     it('Contain chinese only', () => {
-        const ContainChineseOnly = new IsChinese();
         for (let i = 0; i < 100; i++) {
             const str = randomChineseString(~~(10 * Math.random() + 1));
-            assert(ContainChineseOnly.check(str), `${str} contains Chinese only`);
+            assert(chinese_check.check(str), `${str} contains Chinese only`);
         }
         for (let i = 0; i < 100; i++) {
             const str = randomCombine(~~(10 * Math.random() + 1)) + 'A';
-            assert(!ContainChineseOnly.check(str), `${str} contains non Chinese`);
+            assert(!chinese_check.check(str), `${str} contains non Chinese`);
         }
     });
 });
